@@ -46,6 +46,17 @@ pipe.enable_xformers_memory_efficient_attention()
 
 
 with gr.Blocks() as demo:
+    gr.Markdown("# StableSAM: Stable Diffusion + Segment Anything Model")
+    gr.Markdown(
+        """
+    To try the demo, upload an image and select object(s) you want to inpaint.
+    Write a prompt & a negative prompt to control the inpainting.
+    Click on the "Submit" button to inpaint the selected object(s).
+    Check "Background" to inpaint the background instead of the selected object(s).
+
+    If the demo is slow, clone the space to your own HF account and run on a GPU.
+    """
+    )
     selected_pixels = gr.State([])
     with gr.Row():
         input_img = gr.Image(label="Input")
