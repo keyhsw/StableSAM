@@ -53,7 +53,7 @@ with gr.Blocks() as demo:
     )
     selected_pixels = gr.State([])
     with gr.Row():
-        input_img = gr.Image(label="Input")
+        input_img = gr.Image(label="Input", shape=(512, 512))
         mask_img = gr.Image(label="Mask")
         seg_img = gr.Image(label="Segmentation")
         output_img = gr.Image(label="Output")
