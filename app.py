@@ -53,7 +53,7 @@ with gr.Blocks() as demo:
     )
     selected_pixels = gr.State([])
     with gr.Row():
-        input_img = gr.Image(label="Input", shape=(512, 512))
+        input_img = gr.Image(label="Input")
         mask_img = gr.Image(label="Mask", interactive=False)
         seg_img = gr.Image(label="Segmentation", interactive=False)
         output_img = gr.Image(label="Output", interactive=False)
@@ -108,7 +108,14 @@ with gr.Blocks() as demo:
         mask = mask.resize((512, 512))
         seg_img = seg_img.resize((512, 512))
 
-        output = pipe(prompt, image, mask, seg_img, negative_prompt=negative_prompt).images[0]
+        output = pipe(
+            prompt,
+            image,
+            mask,
+            seg_img,
+            negative_prompt=negative_prompt,
+            num_inference_steps=20,
+        ).images[0]
         torch.cuda.empty_cache()
         return output
 
