@@ -8,8 +8,15 @@ from diffusers import ControlNetModel
 from diffusers import UniPCMultistepScheduler
 from controlnet_inpaint import StableDiffusionControlNetInpaintPipeline
 import colorsys
+import urllib.request
 
-sam_checkpoint = "weights/sam_vit_h_4b8939.pth"
+url = "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth"
+filename = "sam_vit_h_4b8939.pth"
+
+urllib.request.urlretrieve(url, filename)
+
+
+sam_checkpoint = "sam_vit_h_4b8939.pth"
 model_type = "vit_h"
 device = "cuda"
 
