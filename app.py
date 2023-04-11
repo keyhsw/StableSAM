@@ -58,7 +58,6 @@ with gr.Blocks() as demo:
         seg_img = gr.Image(label="Segmentation", interactive=False)
         output_img = gr.Image(label="Output", interactive=False)
 
-
     with gr.Row():
         prompt_text = gr.Textbox(lines=1, label="Prompt")
         negative_prompt_text = gr.Textbox(lines=1, label="Negative Prompt")
@@ -78,6 +77,8 @@ with gr.Blocks() as demo:
             point_labels=input_label,
             multimask_output=False,
         )
+        # clear torch cache
+        torch.cuda.empty_cache()
         if bg:
             mask = np.logical_not(mask)
         mask = Image.fromarray(mask[0, :, :])
@@ -94,6 +95,8 @@ with gr.Blocks() as demo:
             rgb_mask[:, :, 2] = boolean_mask * rgb[2]
             finseg += rgb_mask
 
+        torch.cuda.empty_cache()
+
         return mask, finseg
 
     def inpaint(image, mask, seg_img, prompt, negative_prompt):
@@ -106,6 +109,7 @@ with gr.Blocks() as demo:
         seg_img = seg_img.resize((512, 512))
 
         output = pipe(prompt, image, mask, seg_img, negative_prompt=negative_prompt).images[0]
+        torch.cuda.empty_cache()
         return output
 
     def _clear(sel_pix, img, mask, seg, out, prompt, neg_prompt, bg):
