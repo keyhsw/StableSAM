@@ -9,3 +9,4 @@ onnxruntime
 onnx
 transformers
 accelerate
+xformers
