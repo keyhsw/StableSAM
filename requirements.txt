@@ -7,3 +7,4 @@ pycocotools
 matplotlib
 onnxruntime
 onnx
+transformers
