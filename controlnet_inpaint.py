@@ -1,3 +1,4 @@
+# All the code in this file has been taken from: https://github.com/huggingface/diffusers/blob/main/examples/community/stable_diffusion_controlnet_inpaint.py
 # Inspired by: https://github.com/haofanwang/ControlNet-for-Diffusers/
 
 import inspect
