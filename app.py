@@ -153,4 +153,4 @@ with gr.Blocks() as demo:
     )
 
 if __name__ == "__main__":
-    demo.queue(concurrency_count=50).launch()
+    demo.launch()
