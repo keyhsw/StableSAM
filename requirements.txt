@@ -8,3 +8,4 @@ matplotlib
 onnxruntime
 onnx
 transformers
+accelerate
