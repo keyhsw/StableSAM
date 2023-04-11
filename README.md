@@ -1,6 +1,6 @@
 ---
-title: SAM SD
-emoji: 🏃
+title: StableSAM
+emoji: 🍀
 colorFrom: blue
 colorTo: yellow
 sdk: gradio
